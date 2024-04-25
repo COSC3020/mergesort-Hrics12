@@ -15,3 +15,48 @@ part of the array each recursive call considers.
 Analyse the time complexity of your implementation and give a $\Theta$ bound for
 its worst-case runtime. Add your answer, including your reasoning, to this
 markdown file.
+
+```
+function mergesort(array){// Base case becasue if an array only has 0 or 1 element it is already sorted
+if (array.length <= 1) {
+ return array;
+}
+
+let array2 = new Array(array.length);
+
+for (let currentSize = 1; currentSize < array.length; currentSize = currentSize * 2) { // This outerloop run $log(n)$ times because current size is doubled each time
+
+    for (let L = 0; L < array.length; L += 2 * currentSize) {// This middle loop runs $n$ times and is constant becasue it just goes over the 2*currentSize
+        let R = Math.min(L + currentSize, array.length);
+        let endR = Math.min(R + currentSize, array.length);
+        let i = L;
+        let j = R;
+        let k = L;
+
+        while (i < R && j < endR) {
+            if (array[i] <= array[j]) {
+                array2[k++] = array[i++];
+            } else {
+                array2[k++] = array[j++];
+            }
+        }
+
+        while (i < R) {
+            array2[k++] = array[i++];
+        }
+
+        while (j < endR) {
+            array2[k++] = array[j++];
+        }
+    }
+
+    let temp = array;
+    array = array2;
+    array2 = temp;
+}
+
+return array;
+}
+```
+So the outerloop runs $log(n)$ times on each iteration because currentSize is doubled each iteration. The middle loop runs $n$ times because it only iterates over the same size of array (2*currentArray). The innermiddle loop is constant.
+So there is a linear amount of work being done $O(n)$ on each level and there are $O(log n)$ levels. So I think the run time complexity is $O(n\log n)$
