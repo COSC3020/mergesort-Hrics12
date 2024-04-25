@@ -1,26 +1,39 @@
 function mergeSort(array) {
-  if (array.length < 2) return array;
-  let temp = new Array(array.length);
-  for (let size = 1; size < array.length; size *= 2) {
-    for (let LStart = 0; LStart < array.length; LStart += 2*size) {
-      let L = LStart, R = Math.min(L + size, array.length), end = Math.min(R + size, array.length), tempIndex = L;
-      while (L < R && R < end) {
-        if (array[L] <= array[R]) {
-          temp[tempIndex++] = array[L++];
-        } else {
-          temp[tempIndex++] = array[R++];
-        }
-      }
-      while (L < R) {
-        temp[tempIndex++] = array[L++];
-      }
-      while (R < end) {
-        temp[tempIndex++] = array[R++];
-      }
+    if (array.length <= 1) {
+        return array;
     }
-    let swap = array;
-    array = temp;
-    temp = swap;
-  }
-  return array;
+
+    let array2 = new Array(array.length);
+
+    for (let currentSize = 1; currentSize < array.length; currentSize = currentSize * 2) {
+        for (let L = 0; L < array.length; L += 2 * currentSize) {
+            let R = Math.min(L + currentSize, array.length);
+            let endR = Math.min(R + currentSize, array.length);
+            let i = L;
+            let j = R;
+            let k = L;
+
+            while (i < R && j < endR) {
+                if (array[i] <= array[j]) {
+                    array2[k++] = array[i++];
+                } else {
+                    array2[k++] = array[j++];
+                }
+            }
+
+            while (i < R) {
+                array2[k++] = array[i++];
+            }
+
+            while (j < endR) {
+                array2[k++] = array[j++];
+            }
+        }
+
+        let temp = array;
+        array = array2;
+        array2 = temp;
+    }
+
+    return array;
 }
