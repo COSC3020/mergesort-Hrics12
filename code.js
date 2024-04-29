@@ -23,7 +23,7 @@ if(array[mid] <= array[x]){
             left++;
         }
         else{
-            let val = array[x];
+            let value = array[x];
             let index = x;
 
             while(index != left){
