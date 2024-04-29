@@ -1,9 +1,7 @@
 function mergesort(array) {
-    if (array.length <= 1) {
-        return array;
-    }
-
-    let array2 = new Array(array.length);
+    let currentSize;
+    let leftStart
+    let arraySize = array.length
 
     for (let currentSize = 1; currentSize < array.length; currentSize = currentSize * 2) {
         for (let L = 0; L < array.length; L += 2 * currentSize) {
