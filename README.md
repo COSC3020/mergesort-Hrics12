@@ -16,5 +16,6 @@ Analyse the time complexity of your implementation and give a $\Theta$ bound for
 its worst-case runtime. Add your answer, including your reasoning, to this
 markdown file.
 
-So the outerloop runs $log(n)$ times on each iteration because currentSize is doubled each iteration. The middle loop runs $n$ times because it only iterates over the same size of array (2*currentArray). The innermiddle loop is constant.
-So there is a linear amount of work being done $O(n)$ on each level and there are $O(log n)$ levels. So I think the run time complexity is $O(n\log n)$
+The outerloop run $log(n)$ times becasue current size is being doubled each iteration. $n$ is the size of the array. The inner loop runs $n$ times in total for all the iterations of the outerloop because the 
+the size of the sub-arrays are double when merged each iteration of the outside loop. This means the number of sub-arrays is being cut in half. This is because the inner loop is merging pairs of sub-arrays and then moves on to the next pair. The size of the sub-arrays merging is based on what iteration the outerloop is on. In each iteration of the outerloop the nummber of elements merging is $n$ becasue the size of the sub-arrays is doubling but the amount of sub-arrays are halving. So the function is being called once for each pair of sub-arrays merging and has a time complexity of $O(n)$ because it is processing each element in the sub-array once.
+This means the total time complexity of the algorithm is $O(n\log n)$ because the merge function is called $n$ times for each $log n$ iteration.
