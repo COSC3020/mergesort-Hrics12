@@ -27,3 +27,6 @@ The inner loop is shifting elements to the right to make room for the insertion 
 For the absolute worst case it would be if the left sub-array is sorted in descending order and the right sub-array is sorted in ascending order. This would make the inner loop shift all the elements in the left sub-array to the right until it finds the right position for the current element in the right subarray. Which in this case would always be at the beginning of the remaining elements in the left subarray. This would give the worst case of $Theta(n^2)$ for one merge.
 
 The worst case time complexity of the entire merge sort algorithm remains $\Theta(n \log n)$ even in the iterative version. This is because the number of merge operations is proportional to $\log n$ and each merge operation involves $n$ elements. The fact that the merge operation is performed in a loop in the iterative version does not change the overall number of operations.
+
+I found this old repository:
+https://github.com/COSC3020/divide-and-conquer-sum-ziyuWang6666/blob/e538a1b529472e4def078ba3504390b532f6027f/code.js
