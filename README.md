@@ -28,5 +28,6 @@ For the absolute worst case it would be if the left sub-array is sorted in desce
 
 The worst case time complexity of the entire merge sort algorithm remains $\Theta(n \log n)$ even in the iterative version. This is because the number of merge operations is proportional to $\log n$ and each merge operation involves $n$ elements. The fact that the merge operation is performed in a loop in the iterative version does not change the overall number of operations.
 
+Source:
 
 (https://stackoverflow.com/questions/63548204/iterative-approach-of-merge-sort-in-javascript)
